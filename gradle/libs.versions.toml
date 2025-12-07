@@ -1,6 +1,7 @@
 [versions]
 agp = "8.13.1"
 coilNetworkOkhttp = "3.3.0"
+converterKotlinxSerialization = "3.0.0"
 coreSplashscreen = "1.2.0"
 kotlin = "2.1.20"
 coreKtx = "1.17.0"
@@ -14,6 +15,7 @@ composeBom = "2025.11.00"
 lifecycleViewmodelCompose = "2.9.4"
 materialIconsExtended = "1.7.8"
 navigationCompose = "2.9.6"
+retrofit = "3.0.0"
 roomRuntime = "2.8.3"
 ksp = "2.1.20-2.0.0"
 hiltAndroid = "2.57.2"
@@ -29,6 +31,7 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilNetworkOkhttp" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilNetworkOkhttp" }
+converter-kotlinx-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "converterKotlinxSerialization" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +54,7 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
