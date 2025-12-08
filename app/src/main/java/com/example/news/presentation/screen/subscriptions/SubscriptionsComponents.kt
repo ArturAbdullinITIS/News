@@ -165,8 +165,8 @@ fun Subscriptions(
             onClick = onSubscribeClick,
             enabled = isSubButtonEnabled,
             shape = RoundedCornerShape(16.dp),
-            elevation = ButtonDefaults.elevatedButtonElevation(4.dp)
-            )
+            elevation = ButtonDefaults.elevatedButtonElevation(16.dp)
+        )
         {
             Icon(
                 imageVector = Icons.Default.Add,
@@ -174,34 +174,34 @@ fun Subscriptions(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(stringResource(R.string.add_subscription_button))
-
-            if(subscriptions.isNotEmpty()) {
-                Text(
-                    text = stringResource(R.string.subscriptions, subscriptions.size),
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    subscriptions.forEach { (topic, isSelected) ->
-                        item(key = topic) {
-                            SubscriptionChip(
-                                topic = topic,
-                                isSelected = isSelected,
-                                onSubscriptionClick = onTopicClick,
-                                onDelete = onDeleteSub
-                            )
-                        }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        if (subscriptions.isNotEmpty()) {
+            Text(
+                text = stringResource(R.string.subscriptions, subscriptions.size),
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                subscriptions.forEach { (topic, isSelected) ->
+                    item(key = topic) {
+                        SubscriptionChip(
+                            topic = topic,
+                            isSelected = isSelected,
+                            onSubscriptionClick = onTopicClick,
+                            onDelete = onDeleteSub
+                        )
                     }
                 }
-            } else {
-                Text(
-                    modifier = Modifier.fillMaxSize(),
-                    text = stringResource(R.string.no_subscriptions_yet_add_some_topics),
-                    textAlign = TextAlign.Center
-                )
             }
+        } else {
+            Text(
+                modifier = Modifier.fillMaxSize(),
+                text = stringResource(R.string.no_subscriptions_yet_add_some_topics),
+                textAlign = TextAlign.Center
+            )
         }
     }
 }
@@ -214,7 +214,8 @@ fun ArticleCard(
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp, focusedElevation = 8.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp, focusedElevation = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         article.imageUrl.let { imageUrl ->
             AsyncImage(
@@ -234,7 +235,7 @@ fun ArticleCard(
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
-            if(article.description.isNotEmpty()) {
+            if (article.description.isNotEmpty()) {
                 Text(
                     modifier = Modifier.padding(horizontal = 16.dp),
                     text = article.description,
