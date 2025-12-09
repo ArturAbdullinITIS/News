@@ -2,6 +2,7 @@ package com.example.news.presentation.screen.subscriptions
 
 import android.R.attr.onClick
 import android.R.attr.text
+import android.content.Intent
 import android.util.Log.i
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -41,12 +42,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.net.toUri
 import coil3.compose.AsyncImage
 import com.example.news.R
 import com.example.news.domain.entity.Article
@@ -267,9 +271,13 @@ fun ArticleCard(
                     .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                val context = LocalContext.current
                 Button(
                     modifier = Modifier.weight(1f),
-                    onClick = {},
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, article.url.toUri())
+                        context.startActivity(intent)
+                    },
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Icon(
@@ -283,7 +291,13 @@ fun ArticleCard(
                 }
                 Button(
                     modifier = Modifier.weight(1f),
-                    onClick = {},
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT, "${article.title}\n\n${article.url}")
+                        }
+                        context.startActivity(intent)
+                    },
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Icon(
