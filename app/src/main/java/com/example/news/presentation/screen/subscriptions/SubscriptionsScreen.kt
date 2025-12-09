@@ -37,7 +37,6 @@ fun SubscriptionsContent(
     modifier: Modifier = Modifier,
     onNavigateToSettings: () -> Unit,
     viewModel: SubscriptionsViewModel = hiltViewModel()
-
 ) {
     val state by viewModel.state.collectAsState()
 
