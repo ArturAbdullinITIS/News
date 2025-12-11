@@ -1,8 +1,8 @@
 package com.example.news.domain.repository
 
 import com.example.news.domain.entity.Language
+import com.example.news.domain.entity.Settings
 import kotlinx.coroutines.flow.Flow
-import okhttp3.internal.http2.Settings
 
 interface SettingsRepository {
     fun getSettings(): Flow<Settings>
