@@ -70,7 +70,6 @@ class SubscriptionsViewModel @Inject constructor(
                     state.copy(
                         query = command.query
                     )
-
                 }
             }
             SubscriptionsCommand.RefreshData -> {
