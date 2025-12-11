@@ -3,6 +3,7 @@ package com.example.news.di
 import android.R.attr.name
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import com.example.news.data.local.NewsDao
 import com.example.news.data.local.NewsDatabase
 import com.example.news.data.remote.NewsApiService
@@ -66,6 +67,11 @@ interface DataModule {
                 .build()
         }
 
+        @Singleton
+        @Provides
+        fun provideWorkManager(
+            @ApplicationContext context: Context
+        ): WorkManager = WorkManager.getInstance(context)
         @Singleton
         @Provides
         fun provideApiService(
