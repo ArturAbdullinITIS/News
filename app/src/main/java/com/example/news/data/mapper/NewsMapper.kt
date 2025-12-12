@@ -23,6 +23,8 @@ fun NewsResponseDto.toDbModels(topic: String): List<ArticlesDbModel> {
     }
 }
 
+
+
 fun Int.toInterval(): Interval {
     return Interval.entries.first { it.minutes == this}
 }
