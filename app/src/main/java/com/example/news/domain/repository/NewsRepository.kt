@@ -1,6 +1,7 @@
 package com.example.news.domain.repository
 
 import com.example.news.domain.entity.Article
+import com.example.news.domain.entity.RefreshConfig
 import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
@@ -13,4 +14,5 @@ interface NewsRepository {
     suspend fun updateArticlesForAllSubscriptions()
     fun getArticlesByTopic(topics: List<String>): Flow<List<Article>>
     suspend fun clearAllArticles(topics: List<String>)
+    fun startBackgroundRefresh(refreshConfig: RefreshConfig)
 }

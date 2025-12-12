@@ -49,7 +49,7 @@ class NewsRepositoryImpl @Inject constructor(
     }
 
 
-    private fun startBackgroundRefresh(refreshConfig: RefreshConfig) {
+    override fun startBackgroundRefresh(refreshConfig: RefreshConfig) {
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(
                 if(refreshConfig.wifiOnly) {
