@@ -1,8 +1,10 @@
 package com.example.news.data.mapper
 
+import androidx.compose.ui.platform.InterceptPlatformTextInput
 import com.example.news.data.local.ArticlesDbModel
 import com.example.news.data.remote.NewsResponseDto
 import com.example.news.domain.entity.Article
+import com.example.news.domain.entity.Interval
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -19,6 +21,12 @@ fun NewsResponseDto.toDbModels(topic: String): List<ArticlesDbModel> {
             publishedAt = dto.publishedAt.toTimestamp()
         )
     }
+}
+
+
+
+fun Int.toInterval(): Interval {
+    return Interval.entries.first { it.minutes == this}
 }
 
 

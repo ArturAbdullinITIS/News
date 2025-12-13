@@ -32,6 +32,12 @@ interface DataModule {
 
     @Singleton
     @Binds
+    fun bindSettingsRepository(
+         impl: NewsRepositoryImpl
+    ): NewsRepository
+
+    @Singleton
+    @Binds
     fun bindNewsRepository(
          impl: NewsRepositoryImpl
     ): NewsRepository
