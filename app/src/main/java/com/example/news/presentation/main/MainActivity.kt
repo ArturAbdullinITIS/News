@@ -1,6 +1,7 @@
 package com.example.news.presentation.main
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -25,6 +26,9 @@ class MainActivity : ComponentActivity() {
                 )
                 SubscriptionsScreen(
                     onNavigateToSettings = {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                        }
                     }
                 )
             }
