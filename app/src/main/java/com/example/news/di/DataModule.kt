@@ -1,6 +1,7 @@
 package com.example.news.di
 
 import android.R.attr.name
+import android.app.NotificationManager
 import android.content.Context
 import androidx.room.Room
 import androidx.work.WorkManager
@@ -8,7 +9,9 @@ import com.example.news.data.local.NewsDao
 import com.example.news.data.local.NewsDatabase
 import com.example.news.data.remote.NewsApiService
 import com.example.news.data.repository.NewsRepositoryImpl
+import com.example.news.data.repository.SettingsRepositoryImpl
 import com.example.news.domain.repository.NewsRepository
+import com.example.news.domain.repository.SettingsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -33,8 +36,8 @@ interface DataModule {
     @Singleton
     @Binds
     fun bindSettingsRepository(
-         impl: NewsRepositoryImpl
-    ): NewsRepository
+         impl: SettingsRepositoryImpl
+    ): SettingsRepository
 
     @Singleton
     @Binds
@@ -51,6 +54,13 @@ interface DataModule {
                 coerceInputValues = true
             }
         }
+
+
+        @Provides
+        @Singleton
+        fun provideNotificationManager(
+            @ApplicationContext context: Context
+        ): NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 
         @Singleton
