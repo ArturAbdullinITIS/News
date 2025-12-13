@@ -1,6 +1,7 @@
 package com.example.news.di
 
 import android.R.attr.name
+import android.app.NotificationManager
 import android.content.Context
 import androidx.room.Room
 import androidx.work.WorkManager
@@ -51,6 +52,13 @@ interface DataModule {
                 coerceInputValues = true
             }
         }
+
+
+        @Provides
+        @Singleton
+        fun provideNotificationManager(
+            @ApplicationContext context: Context
+        ): NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 
         @Singleton
