@@ -10,6 +10,15 @@ plugins {
 
 }
 
+
+private val keystorePropertiesFile = rootProject.file("keystore.properties")
+private val keystoreProperties = keystorePropertiesFile.inputStream().use { inputStream ->
+    Properties().apply {
+        load(inputStream)
+    }
+}
+
+private val apiKey = keystoreProperties.getProperty("NEWS_API_KEY")
 android {
     namespace = "com.example.news"
     compileSdk = 36
@@ -20,10 +29,8 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-        val properties = Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField("String", "NEWS_API_KEY", "\"${properties.getProperty("NEWS_API_KEY")}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "NEWS_API_KEY", apiKey)
     }
 
     buildTypes {
