@@ -27,6 +27,7 @@ render.experimental.xml
 *.jks
 *.keystore
 
+
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 
@@ -82,7 +83,7 @@ proguard/
 *.swp
 
 # Keystore files
-
+keystore.properties
 # Google Services (e.g. APIs or Firebase)
 # google-services.json
 
