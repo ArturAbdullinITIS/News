@@ -18,6 +18,5 @@ class AppStartupManager @Inject constructor(
         scope.launch {
             startRefreshDataUseCase()
         }
-
     }
 }
